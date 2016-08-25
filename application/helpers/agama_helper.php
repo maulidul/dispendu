@@ -1,11 +1,11 @@
 <?php
 
 function arr_agama($par=1){
-	$q=array('1'=>'islam','2'=>'kristen','3'=>'hindu'
-				,'4'=>'budha','5'=>'katholig');
+	$q=array('1'=>'Islam','2'=>'Kristen','3'=>'Hindu'
+				,'4'=>'Budha','5'=>'Katholig');
 	if($par==1){return $q;}else{
-		return $qq=array('islam'=>'1','kristen'=>'2'
-						,'hindu'=>'3','budha'=>'4',
+		return $qq=array('Islam'=>'1','Kristen'=>'2'
+						,'Hindu'=>'3','Budha'=>'4',
 			'katholik'=>'5');
 	}
 

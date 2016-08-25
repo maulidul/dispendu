@@ -7,7 +7,7 @@
 			  <div class="panel panel-primary">
 			   <div class="panel-heading ">
 			   		<div class='row'>
-					   	<span class='col-md-8'>Data kematian</span>
+					   	<span class='col-md-8'>Data perpindahan</span>
 					   	
 					   	<form class='col-md-4' method='GET' >
 		            		<input type="text" class="form-control" id="cari" name="q" value="<?php echo (isset($_GET['q']))?$_GET['q']:''?>">
@@ -21,7 +21,7 @@
 						<th>Nama</th>
 						<th>tanggal perpindahan</th>
 						<th>keterangan</th>
-					<th colspan=3><?php echo anchor('penduduk/insert_perpindahan','insert','class="btn btn-xs btn-default"');?></th>
+					<th colspan=3><?php echo anchor('penduduk/insert_perpindahan','Insert','class="btn btn-xs btn-default"');?></th>
 						
 					</tr>
 				<?php 
@@ -38,7 +38,6 @@
 							<td>'.$r->keterangan.'</td>				
 							<td>
 							<div class="btn-group btn-group-xs" role="group" aria-label="...">
-								'.anchor('penduduk/edit_kelahiran/'.$nik,'edit','class="btn btn-xs btn-default"').'
 							</div>
 							</td>
 						</tr>';

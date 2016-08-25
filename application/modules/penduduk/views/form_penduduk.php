@@ -58,10 +58,10 @@
 	 <div class="col-md-6" >
 			<?php
 		$dropdon=array('type'=>'dropdown','value'=>'','class'=>'form-control');
-		$submit=array('type'=>'submit','value'=>'save','class'=>'btn btn-xs btn-primary');
+		$submit=array('type'=>'submit','value'=>'Save','class'=>'btn btn-xs btn-primary');
 		$jenis_laki2=array('type'=>'radio','value'=>'1','session_name()'=>'jk','class'=>'form-control');
 		$jenis_perempuan=array('type'=>'radio','value'=>'0','name'=>'jk','class'=>'form-control');
-		$stt=array(	'0'=>'belum menikah','1'=>'menikah');	?>
+		$stt=array(	'0'=>'Belum menikah','1'=>'Menikah');	?>
 			<table class='table'> 
 				<tr>
 						<td><label for='exampleInputEmail1'>NIK</label></td>
@@ -72,11 +72,11 @@
 						<td><?=form_input('ktp',isset($ktp)?$ktp:'','class="form-control"')?></td>
 				</tr>
 				<tr>
-					<td><label for='exampleInputEmail1'>nama</label></td>
+					<td><label for='exampleInputEmail1'>Nama</label></td>
 					<td>	<?=form_input('nama',isset($nama)?$nama:'','class="form-control"')?></td>
 				</tr>
 				<tr>
-					<td><label for='exampleInputEmail1'>jenis_kelamin</label></td>
+					<td><label for='exampleInputEmail1'>Jenis_kelamin</label></td>
 					<td>
 					 	<input type="radio" name="jk" value="1"<?php echo ($jenis==1)?'checked':''?> >laki laki
 						<input type="radio" name="jk" value="0"<?php echo ($jenis==0)?'checked':''?> >perempuan
@@ -86,11 +86,11 @@
 					<td><label for='exampleInputEmail1'>foto</label></td>
 					<td><?=form_upload('foto',isset($foto)?$foto:'','class="form-control"')?></td></tr>
 				<tr>
-					<td><label for='exampleInputEmail1'>agama</label></td>
+					<td><label for='exampleInputEmail1'>Agama</label></td>
 					<td><?=form_agama(isset($agama)?$agama:'')?></td>
 				<tr>
 				<tr><?php //print_r($pkr);?>
-				<td><label for='exampleInputEmail1'>pekerjaan</label></td>
+				<td><label for='exampleInputEmail1'>Pekerjaan</label></td>
 				<td><?=form_dropdown('pekerjaan',$pkr,isset($pekerjaan)?$pekerjaan:'','class="form-control"')?></td>
 			</tr>
 			</table>
@@ -126,15 +126,15 @@
 				<td><?=form_dropdown('status',$stt,isset($perkawinan)?$perkawinan:'','class="form-control"')?></td>
 			</tr>
 			<tr>
-				<td><label for='exampleInputEmail1'>nama_kk</label></td>
+				<td><label for='exampleInputEmail1'>Nama_kk</label></td>
 				<td><?=form_input('kk','','class="form-control" id="kk"')?></td>
 			</tr>
 			<tr>
-			<td><label for='exampleInputEmail1'>gol_darah</label></td>
+			<td><label for='exampleInputEmail1'>Gol_darah</label></td>
 			<td><?=form_dropdown('gol_darah',['a'=>'A','b'=>'B','ab'=>'AB','o'=>'O'],isset($gol_darah)?$gol_darah:'','class="form-control"')?></td></tr>
 			</tr>
 			<tr style="background:#add">
-				<td><label for='exampleInputEmail1'>tempat lahir</label></td>
+				<td><label for='exampleInputEmail1'>Tempat lahir</label></td>
 				<td><?=form_input("tempat_kelahiran",'',"class='form-control' id='kelurahan'")?></td>
 			</tr>
 			<tr style="background:#add">
@@ -147,16 +147,16 @@
 				<td><?=form_input("tempat_kematian",'',"class='form-control' id='kematian'")?></td>
 			</tr>
 			<tr style="background:#fdd">
-				<td><label for='exampleInputEmail1'>tanggal_kematian</label></td>
+				<td><label for='exampleInputEmail1'>Tanggal_kematian</label></td>
 				<td><?=form_input(['name'=>"tanggal_k",'value'=>isset($kematian)?$kematian:'',"class"=>'form-control','type'=>'date'])?></td>	
 			</tr>
 			
 			<tr>
 				<td></td>
 				<td>
-					<?php $submit=array('type'=>'submit','value'=>'save','class'=>'btn btn-md btn-primary');?>
+					<?php $submit=array('type'=>'submit','value'=>'Save','class'=>'btn btn-md btn-primary');?>
 					<?=form_submit($submit)//form_submit($submit)=($menu_ac)?(false)?>
-					<button class='btn btn-md btn-warning' onclick='history.back();'>back</button>
+					<button class='btn btn-md btn-warning' onclick='history.back();'>Back</button>
 				</td>
 			</tr>
 		</table>

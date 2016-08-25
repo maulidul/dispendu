@@ -22,7 +22,7 @@
 						<th>NO KK</th>
 						<th>Nama</th>
 						<th>Agama</th>
-						<th colspan=3><?php echo anchor('penduduk/new_penduduk','insert','class="btn btn-xs btn-default"');?></th>
+						<th colspan=3><?php echo anchor('penduduk/new_penduduk','Insert','class="btn btn-xs btn-default"');?></th>
 						
 					</tr>
 				<?php 
@@ -39,9 +39,9 @@
 							<td>'.get_agama($r->id_agama).'</td>
 							<td>
 							<div class="btn-group btn-group-xs" role="group" aria-label="...">
-								'.anchor('penduduk/detail/'.$ktp,'detail',' class="btn btn-xs btn-default"').'
-								'.anchor('penduduk/edit_penduduk/'.$id,'edit',' class="btn btn-xs btn-default"').'
-								<a onclick="delete_rec('.$id.');" class="btn btn-xs btn-danger">delete</a>
+								'.anchor('penduduk/detail/'.$ktp,'Detail',' class="btn btn-xs btn-default"').'
+								'.anchor('penduduk/edit_penduduk/'.$id,'Edit',' class="btn btn-xs btn-default"').'
+								<a onclick="delete_rec('.$id.');" class="btn btn-xs btn-danger">Delete</a>
 							</div>
 							</td>
 						</tr>';

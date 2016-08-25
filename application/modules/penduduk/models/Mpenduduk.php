@@ -579,12 +579,26 @@ class Mpenduduk extends CI_Model{
 	function select_perpindahan($start){
 		$start=($start>1)?10*($start-1):0;
 		if(isset($_GET['q'])){
-			$this->db->like('p.nama_lengka',$_GET['q']);
+			$this->db->like('p.nama_lengkap',$_GET['q']);
 		}
 		$this->db->limit(10,$start);
 		$this->db->select(array('pp.*','p.nama_lengkap'));
 		$this->db->join('penduduk p','pp.NIK=p.NIK', 'left');
 		$q=$this->db->get('penduduk_perpindahan pp');
+		return $q->result();
+		}
+	function select_kelahiran($start){
+		$start=($start>1)?10*($start-1):0;
+		if(isset($_GET['q'])){
+			$this->db->like('p.nama_lengkap',$_GET['q']);
+		}
+		$this->db->limit(10,$start);
+	
+		$this->db->where('pk.tanggal_lahir >','0001-01-01');
+		$this->db->select(array('pk.*','penduduk.nama_lengkap','lokasi_kelurahan.name as kelurahan'));
+		$this->db->join('penduduk ','pk.NIK=penduduk.NIK', 'left');
+		$this->db->join('lokasi_kelurahan','pk.id_kelurahan_ttl=lokasi_kelurahan.ID', 'left');
+		$q=$this->db->get('penduduk_kelahiran pk');
 		return $q->result();
 		}
 	
