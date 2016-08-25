@@ -1,0 +1,20 @@
+#footer{
+	height:20px;
+	background-color:#233;
+	position:fixed;
+}
+.forgot-error{
+	color:red;
+}
+.forgot-success{
+	color:green;
+}
+.child-menu{
+	text-indent: 5px;
+}
+.child-menu:hover{
+	text-indent: 8px;
+}
+a:hover{text-decoration: none;}
+#upload{width:100px;height:100px;}
+.panel *{cursor:pointer;}
