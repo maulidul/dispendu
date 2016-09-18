@@ -53,7 +53,7 @@
 			$tempat_meninggal=$row->id_kelurahan_kematian;		
 		}
 	}
-	echo form_open();
+	echo form_open_multipart();
 		?>
 	 <div class="col-md-6" >
 			<?php
@@ -84,7 +84,8 @@
 				</tr>		
 				<tr>
 					<td><label for='exampleInputEmail1'>foto</label></td>
-					<td><?=form_upload('foto',isset($foto)?$foto:'','class="form-control"')?></td></tr>
+					<td><input type="file" name="userfile" size="20" /></td>
+					</tr>
 				<tr>
 					<td><label for='exampleInputEmail1'>Agama</label></td>
 					<td><?=form_agama(isset($agama)?$agama:'')?></td>

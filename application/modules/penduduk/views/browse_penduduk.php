@@ -17,7 +17,7 @@
 					<table  style='text-align:center;' class='table'>
 					<tr>
 						<th>No</th>
-						<th>#</th>
+						<th>foto</th>
 						<th>KTP</th>
 						<th>NO KK</th>
 						<th>Nama</th>
@@ -32,7 +32,7 @@
 						$ktp=$r->KTP;				//print_r($r);	//print_r($r->Nama_pekerjaan);
 						echo '<tr style="text-align:left">
 							<td>'.$no.'</td>
-							<td>'.img(base_url('uploads/foto/'.$r->foto),'class="img-rounded" style="width:40px"').'</td>
+							<td>'.img(base_url('uploads/'.$r->foto),'','class="img-rounded" width="40px"').'</td>
 							<td>'.$r->KTP.'</td>
 							<td>'.$r->no_kk.'</td>
 							<td>'.$r->nama_lengkap.'</td>

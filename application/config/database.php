@@ -62,14 +62,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 //print_r($_SERVER['HTTP_HOST']);
-
+if($_SERVER['HTTP_HOST']=='zaqi.web.id'){
+	$username='rohmanah_zaqi';
+	$password='passwordStrengh90';
+	$dbs='rohmanah_dispendu';
+}else{
+	$username='root';
+	$password='root';
+	$dbs='dispendu_or_id';
+}
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
+	'username' => $username,
 	//'password' => 'iTAYWGnJ',
-	'password' => 'root',
-	'database' => 'dispendu_or_id',
+	'password' => $password,
+	'database' => $dbs,
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
