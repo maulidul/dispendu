@@ -129,7 +129,7 @@ function __construct()
 		return $this->pagination->create_links();
 
 	 }
-	
+	 
 	 function set_ketua($ktp,$id_kk){
 	 	$this->load->m->set_ketua($ktp,$id_kk);
 
@@ -392,7 +392,7 @@ function __construct()
   		$query=$this->m->cari_id_penduduk();
   		if($query){
   			foreach ($query as $dk) {
-  				$data[]=['nama_penduduk'=>$dk->nama_lengkap,'NIK'=>$dk->NIK,'id'=>$dk->NIK];
+  				$data[]=['nama_kk'=>$dk->nama_lengkap,'NIK'=>$dk->NIK,'id'=>$dk->NIK];
   			}
   			echo json_encode($data);
   		}

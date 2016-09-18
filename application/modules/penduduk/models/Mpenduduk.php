@@ -18,10 +18,15 @@ class Mpenduduk extends CI_Model{
 			$perkawinan=$this->input->post("status");
 			$kk=$this->input->post("kk");
 			$gol_darah=$this->input->post("gol_darah");
+			if ($_FILES['userfile']['tmp_name'] !='')
+			{
+				$foto=$this->uploadfoto();
+			}
 				$data_p=array(
 				 'KTP'=>$ktp,
 				 'nama_lengkap'=>$nama,
-				 'no_kk'=>$kk);
+				 'no_kk'=>$kk
+				 );
 				$data_pd=array(
 				 'jenis_kelamin'=>$jk,
 				 'id_agama'=>$agama,
@@ -29,6 +34,10 @@ class Mpenduduk extends CI_Model{
 				 'status_perkawinan'=>$perkawinan,
 				 'gol_darah'=>$gol_darah
 				);
+				if(isset($foto)){
+						$data_pd['foto']=$foto;
+				
+				}
 				$data_pk=array(
 				'id_kelurahan_ttl'=>$tempat_kelahiran,
 				'tanggal_lahir'=>$tanggal				
@@ -59,12 +68,60 @@ class Mpenduduk extends CI_Model{
 						$this->session->set_flashdata('info','Data Berhasil Ditambahkan.');
 					}
 				}	 
-					redirect('penduduk/edit_penduduk/'.$nik);
+					//redirect('penduduk/edit_penduduk/'.$nik);
 		}
 	}
+	function getimagelama($nik){
+			if($nik != ''){
+				$this->db->limit(1);
+				$this->db->where('NIK',$nik);
+				$this->db->select('foto');
+				$q=$this->db->get('penduduk_detail');
+				$this->session->keep_flashdata('nik');
+				if($q->num_rows()>0){
+					$foto=$q->row()->foto;
+					return $foto;				
+				}	
+			}
+			//exit($nik);
+			return date('dmygis');
+	}
+	
+	function uploadfoto()
+				{	//print_r($_SESSION);
+				$nik=$this->session->flashdata('nik');
+				//$this->session->keep_flashdata('nik');
+					$filename=$this->getimagelama($nik);
+					$config['overwrite']=true;
+					$config['upload_path'] = './uploads/';
+					$config['file_name']=$filename;
+					$config['allowed_types'] = 'png|jpg';
+					$config['max_size']	= '1000';
+					//$config['max_width']  = '1024';
+					//$config['max_height']  = '768';
+
+					$this->load->library('upload', $config);
+
+					if ( ! $this->upload->do_upload())
+					{
+						$error = array('error' => $this->upload->display_errors());
+						print_r($error);
+						exit;
+						return 'noimage';
+						//$this->load->view('upload_form', $error);
+					}
+					else
+					{
+						$data = array('upload_data' => $this->upload->data());
+						//print_r($data);
+						return $data['upload_data']['file_name'];
+						//$this->load->view('upload_success', $data);
+					}
+				
+			}
 	
 	function update_detail($data,$where){
-		print_r($where);
+		//print_r($where);
 		$this->db->where($where);
 		$q=$this->db->get('penduduk_detail');
 		if($q->num_rows() == 0)$this->db->insert('penduduk_detail',['nik'=>$where['NIK']]);
@@ -432,6 +489,7 @@ class Mpenduduk extends CI_Model{
 			}
 			return false;
 	}
+		
 	function insert_keluarga(){
 		if($_POST){print_r($_POST);
 		//$id=$this->input->post('id');

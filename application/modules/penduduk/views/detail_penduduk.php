@@ -26,7 +26,11 @@
 
 								//print_r($r->Nama_pekerjaan);
 								?>
-								<tr>
+									
+										<tr>
+											<th width='60px'>NIK</th><td><?=$r->NIK?></td>
+										</tr>
+										<tr>
 											<th width='60px'>ktp</th><td><?=$r->KTP?></td>
 										</tr>
 										<tr>
