@@ -86,3 +86,7 @@ footer {
   bottom:0px;
   width:100%;
 }
+
+.header-image{
+	background-image:url('../images/icon/logo.png');
+}

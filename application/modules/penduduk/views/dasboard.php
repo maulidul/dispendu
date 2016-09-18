@@ -46,7 +46,7 @@
 			 <div class="panel panel-default">
 				<div class="panel-heading ">
 					<div class='row'>
-					 	<span class='col-md-8'>Data masuk</span> 	
+					 	<span class='col-md-8'>Data Penduduk masuk</span> 	
 					</div>
 				</div>
 				<div class="panel-body ">
@@ -58,7 +58,7 @@
 			 <div class="panel panel-default">
 				<div class="panel-heading ">
 					<div class='row'>
-					 	<span class='col-md-8'>Data Keluar</span> 	
+					 	<span class='col-md-8'>Data Penduduk Keluar</span> 	
 					</div>
 				</div>
 				<div class="panel-body ">

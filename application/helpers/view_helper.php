@@ -51,9 +51,10 @@ function not_found(){
 function get_logo_web(){
 	echo img(array(
 			'src'=>base_url('assets/images/icon/logo.png'),
-			'height'=>'30px'
+			'style'=>'margin-top:-10px',
+			'width'=>'40px'
 		)
-	);
+	).' <font color="#fff"><b>LOWOK</b>WARU</font>';
 }
 
 ?>
