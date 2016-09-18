@@ -228,7 +228,7 @@ class Mpenduduk extends CI_Model{
 		return $q;
 	}
 	function delete_penduduk($id){
-		$this->db->delete('penduduk', array('ID' => $id));
+		$this->db->delete('penduduk', array('NIK' => $id));
 	}
 	function detail($ktp){
 		$this->db->select(array('p.NIK as id_penduduk',

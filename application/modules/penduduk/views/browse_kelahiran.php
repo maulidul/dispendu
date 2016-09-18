@@ -7,7 +7,7 @@
 			  <div class="panel panel-primary">
 			   <div class="panel-heading ">
 			   		<div class='row'>
-					   	<span class='col-md-8'>Data kematian</span>
+					   	<span class='col-md-8'>Data kelahiran</span>
 					   	
 					   	<form class='col-md-4' method='GET' >
 		            		<input type="text" class="form-control" id="cari" name="q" value="<?php echo (isset($_GET['q']))?$_GET['q']:''?>">

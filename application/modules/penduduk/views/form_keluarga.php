@@ -85,7 +85,7 @@
 							return '[]';
 						}
 
-//echo get_penduduk($penduduk_val);
+echo get_penduduk($penduduk_val);
 					?>
 								
 					<?=form_close()?>
