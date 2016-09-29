@@ -214,7 +214,9 @@ class Mpenduduk extends CI_Model{
 		$start=($start>1)?10*($start-1):0;
 		if(isset($_GET['q'])){
 			$this->db->like('p.nama_lengkap',$_GET['q']);
-		}
+		}else if(isset($_GET['qr'])){
+			$this->db->like('p.KTP',$_GET['qr']);
+			$this->db->or_like('p.nama_lengkap',$_GET['qr']);}
 		$this->db->limit(10,$start);
 		$this->db->select(array('p.NIK','p.KTP','p.nama_lengkap','p.no_kk','penduduk_detail.foto'
 								//,'p.id_kelurahan'
@@ -231,7 +233,34 @@ class Mpenduduk extends CI_Model{
 		return $q->result();
 				
 	}
-
+	
+	function filter_penduduk($start){
+		$start=($start>1)?10*($start-1):0;
+		if(isset($_GET['tahun'])){
+			$tahun=$_GET['tahun'];
+			$this->db->where('YEAR(pkh.tanggal_lahir) <=',$tahun);
+			$this->db->where('YEAR(pkm.tanggal_kematian) >',$tahun);	
+			$this->db->or_where('YEAR(pkm.tanggal_kematian) =','0000-00-00');
+			$this->db->where('YEAR(pkh.tanggal_lahir) <=',$tahun);
+		}
+		//$this->db->limit(10,$start);
+		$this->db->select(array(
+								'p.NIK'
+								,'p.KTP'
+								,'p.nama_lengkap'
+								,'p.no_kk'
+								,'penduduk_detail.foto'
+								,'penduduk_detail.id_agama'
+								));
+		$this->db->join('penduduk_detail', 'p.NIK=penduduk_detail.NIK', 'left');
+		$this->db->join('penduduk_kelahiran pkh', 'pkh.NIK=p.NIK', 'left');
+		$this->db->join('penduduk_kematian pkm', 'pkm.NIK=p.NIK', 'left');
+		
+		$q=$this->db->get('penduduk p');
+		return $q->result();
+				
+	}
+	
 	function select_penduduk($nik){
 		$this->db->where('p.NIK',$nik);
 		$this->db->select(array('p.NIK','p.KTP','p.nama_lengkap','p.no_kk','penduduk_detail.foto'
@@ -534,6 +563,7 @@ class Mpenduduk extends CI_Model{
 	}
 	function update_keluarga($id){
 		if($_POST){
+		//print_r($_POST);exit;
 		$id_kepala=$this->input->post('id');
 		$no=$this->input->post('no');
 		$nama=$this->input->post('nama');
@@ -564,12 +594,12 @@ class Mpenduduk extends CI_Model{
 	function detail_keluarga($id){
 		$this->db->select(array(
 			'kk.ID as id_kk','kk.no_kk as no_kk','kk.nama_kk as nama_keluarga',
-			'p1.KTP as ktp_ketua','p1.nama_lengkap as nama_ketua',
-			'p2.KTP as ktp_anggota','p2.nama_lengkap as nama_anggota',
+			'p1.NIK as nik_ketua','p1.nama_lengkap as nama_ketua',
+			'p2.NIK as nik_anggota','p2.nama_lengkap as nama_anggota',
 			)
 		);
 		$this->db->where('kk.ID ',$id);
-		$this->db->join('penduduk p1','kk.no_kk=p1.KTP', 'left');//kepla_keluarga
+		$this->db->join('penduduk p1','kk.NIK_kepala=p1.NIK', 'left');//kepla_keluarga
 		$this->db->join('penduduk p2','kk.no_kk=p2.no_kk', 'left');//anggotakeluarga
 		$q=$this->db->get('kartu_keluarga kk');
 		return $q->result();
@@ -609,11 +639,8 @@ class Mpenduduk extends CI_Model{
 	function set_ketua($ktp,$id_kk){
 		if($ktp!=""){
 			$this->db->where('ID',$id_kk);
-			$this->db->update('kartu_keluarga',['ktp_kepala_keluarga'=>$ktp]);
-
-
-		redirect('penduduk/detail_kk/'.$id_kk);
-
+			$this->db->update('kartu_keluarga',['NIK_kepala'=>$ktp]);
+			redirect('penduduk/detail_kk/'.$id_kk);
 		}
 
 

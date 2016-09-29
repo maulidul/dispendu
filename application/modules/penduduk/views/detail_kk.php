@@ -22,10 +22,10 @@
 											//print_r($r);exit;
 													 $id_kk=$r->id_kk;
 													 $no_kk=$r->no_kk;
-													 $ktp=!empty($r->ktp_ketua)?$r->ktp_ketua:'Belum Diset';
-													 $ketua=!empty($r->nama_ketua)?anchor('penduduk/detail/'.$ktp,$r->nama_ketua):'Belum Diset';
+													 $nik=!empty($r->nik_ketua)?$r->nik_ketua:'Belum Diset';
+													 $ketua=!empty($r->nama_ketua)?anchor('penduduk/detail/'.$nik,$r->nama_ketua):'Belum Diset';
 													 $nama_keluarga=$r->nama_keluarga;
-													 $calon_kepala[$r->ktp_anggota]=$r->nama_anggota;
+													 $calon_kepala[$r->nik_anggota]=$r->nama_anggota;
 													$no++;
 													$submit=array('type'=>'submit','value'=>'save','class'=>'btn btn-xs btn-primary');
 							
@@ -38,8 +38,8 @@
 																<th>Nama Keluarga</th><td>".$nama_keluarga."</td>
 															</tr>
 															<tr>
-																<th>Ktp Kepala</th>		
-																<td>".$ktp."</td>
+																<th>NIK Kepala</th>		
+																<td>".$nik."</td>
 															</tr>
 															<tr>
 																<th>Nama Kepala</th><td>".$ketua."</td>
@@ -89,14 +89,14 @@
 								$no=1;
 								foreach ($q as $r){
 									 $nama_anggota=$r->nama_anggota;
-									 $ktp_anggota=!empty($r->ktp_anggota)?$r->ktp_anggota:'Belum Diset';
+									 $nik_anggota=!empty($r->nik_anggota)?$r->nik_anggota:'Belum Diset';
 									
 									echo "
 										<tr>
 											<td>".$no."</td>
-											<td>".anchor('penduduk/detail/'.$ktp_anggota,$ktp_anggota)."</td>
+											<td>".anchor('penduduk/detail/'.$nik_anggota,$nik_anggota)."</td>
 											<td>".$nama_anggota."</td>
-										<td>".(($ktp_anggota!=$ktp)?anchor('penduduk/set_ketua/'.$ktp_anggota.'/'.$id_kk,'set_ketua'):'')."</td>
+										<td>".(($nik_anggota!=$nik)?anchor('penduduk/set_ketua/'.$nik_anggota.'/'.$id_kk,'set_ketua'):'')."</td>
 										</tr>
 										
 										";

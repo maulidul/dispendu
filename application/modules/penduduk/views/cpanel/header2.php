@@ -26,5 +26,20 @@
           </button>
           <a class="navbar-brand" href="#"><?php get_logo_web(); ?><b></b></a>
         </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <div class="dropdown" style="margin-top:14px;margin-left:20px">
+                <div class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                  <span class="caret"></span>
+                </div>
+              
+              </div>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search..."id="cari" name="qr" value="<?php echo (isset($_GET['qr']))?$_GET['qr']:''?>">
+          </form>
+        </div>
       </div>
 </nav>

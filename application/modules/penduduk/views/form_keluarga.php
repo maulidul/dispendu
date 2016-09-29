@@ -123,7 +123,8 @@
 				var populate=<?=get_kk($no);?>;
 	    $("#penduduk").tokenInput("<?=site_url('penduduk/cari_id_penduduk')?>", {
               propertyToSearch: "nama_kk",
-              resultsFormatter: function(item){ return "<li>" + "<div style='display: inline-block; padding-left: 10px;'>" +
+              resultsFormatter: function(item){ return "<li>" + 
+              "<div style='display: inline-block; padding-left: 10px;'>" +
               "<div class='full_name'>" + item.nama_kk + "</div></div></li>" },
               tokenFormatter: function(item) { return "<li><p>" + item.nama_kk + " </p></li>" },
               tokenLimit : 1,

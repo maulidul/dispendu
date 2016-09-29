@@ -86,7 +86,10 @@ Morris.Bar({
 	ykeys: ['jumlah'],
 	labels: ['Jumlah'],
 	xLabelAngle: 60
-});
+}).on('click', function(i, row){
+  //console.log(i, row);
+  document.location="<?=site_url('penduduk/filter_penduduk/0/filter?tahun=" + row.tahun + "')?>";
+});;
 
 Morris.Bar({
 	element: 'kematian',

@@ -130,18 +130,27 @@ function __construct()
 
 	 }
 	 
-	 function set_ketua($ktp,$id_kk){
-	 	$this->load->m->set_ketua($ktp,$id_kk);
-
-
+	 function set_ketua($nik,$id_kk){
+	 	$this->m->set_ketua($nik,$id_kk);
 	 }
 
 	 function data_penduduk($start=1){
 	 	$data['title']='Dashboard';
 		$data['menu_ac']=2;
 		//if(!empty($this->session->flashdata('nik')))$this->session->unset_userdata('nik');
-		$this->load->view(getcontroller('c1').'/Header',$data);
+		$this->load->view(getcontroller('c1').'/header2',$data);
+		$data['qr']=$this->m->data_penduduk($start);
 		$data['q']=$this->m->data_penduduk($start);
+		$data['pagin']=$this->pagination();
+		$this->load->view('browse_penduduk',$data);
+	 }
+
+	 function filter_penduduk($start=1){
+	 	$data['title']='Filter';
+		$data['menu_ac']=2;
+		//if(!empty($this->session->flashdata('nik')))$this->session->unset_userdata('nik');
+		$this->load->view(getcontroller('c1').'/Header',$data);
+		$data['q']=$this->m->filter_penduduk($start);
 		$data['pagin']=$this->pagination();
 		$this->load->view('browse_penduduk',$data);
 	 }
@@ -392,7 +401,7 @@ function __construct()
   		$query=$this->m->cari_id_penduduk();
   		if($query){
   			foreach ($query as $dk) {
-  				$data[]=['nama_kk'=>$dk->nama_lengkap,'NIK'=>$dk->NIK,'id'=>$dk->NIK];
+  				$data[]=['nama_kk'=>$dk->nama_lengkap,'NIK'=>$dk->NIK,'id'=>$dk->nama_lengkap];
   			}
   			echo json_encode($data);
   		}
